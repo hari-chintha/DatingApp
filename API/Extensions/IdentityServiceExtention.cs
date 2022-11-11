@@ -15,11 +15,11 @@ namespace API.Extensions
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{
-                    ValidateIssuer = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters{                  
                     ValidateIssuerSigningKey = true,
-                    ValidateAudience = true
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 };
             });
 
